@@ -35,8 +35,8 @@ For this module, you have to declare, in the `pom.xml` file, the following depen
 | ${project.groupId} | lab05-contract | ${project.version}||
 | ch.qos.logback | logback-classic | 1.2.3 ||
 | org.springframework | spring-context | 5.1.9.RELEASE ||
-| org.apache.cxf | cxf-rt-frontend-jaxws | 3.1.9 ||
-| org.apache.cxf | cxf-rt-transports-http | 3.1.9 ||
+| org.apache.cxf | cxf-rt-frontend-jaxws | 3.3.3 ||
+| org.apache.cxf | cxf-rt-transports-http | 3.3.3 ||
 
 ## lab05-contract
 Create a new Maven module called **lab05-contract**.
@@ -51,7 +51,7 @@ You will declare `CompanyDTO`, a simple POJO with a name attribute. Don't forget
 
 For the facade, declare a `CompanyWS` interface, annotated with `@WebService`and defining 2 methods:
 * `getAllCompanies` which returns a collection of `CompanyDTO`
-* `saveCompany` which takes a `Company` parameter.
+* `saveCompany` which takes a `CompanyDTO` parameter.
 
 That's it for the contract, it is already finished!
 
@@ -82,7 +82,7 @@ Here is a [tip](https://stackoverflow.com/questions/21244066/spring-javaconfig-a
 In `yncrea.lab05.web.config` create `WSConfig`
 * Add the usual configuration annotations to let Spring detect that it is a configuration class and to specify which package should be scanned.
 * Add `@ImportResource` which will import the `classpath:META-INF/cxf/cxf.xml` file.
-* Inject a CXF `Bus` bean and the `StudentWS` bean as well
+* Inject a CXF `Bus` bean and the `CompanyWS` bean as well
 * Declare a `Endpoint` bean
    * instanciate an `EndpointImpl` object with the two injected beans passed in the constructor.
    * its address will be `"/company"`

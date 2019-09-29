@@ -18,7 +18,9 @@ public class Company extends GenericEntity{
     }
 
 
-
+    public Company(final String name) {
+        this.name = name;
+    }
 
 
     public String getName() {
